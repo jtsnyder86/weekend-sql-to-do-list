@@ -1,7 +1,19 @@
 console.log('script running');
 
-$(hanldeReady);
+$(handleReady);
+
 
 function handleReady () {
     console.log('jq running');
+
+
+
+
+    getTasks();
 };
+
+function getTasks () {
+    console.log('in getTasks');
+    $('#viewTasks').empty();
+
+}
