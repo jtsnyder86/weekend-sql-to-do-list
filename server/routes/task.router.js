@@ -32,7 +32,19 @@ taskRouter.get('/', (req, res) => {
 });
 
 // POST
+taskRouter.post('/', (req, res) => {
+    let queryText = `
+    INSERT INTO "todo" ("task", "status")
+    VALUES ($1, $2);`;
 
+    let queryValues = [
+        req.body.task,
+        false
+    ];
+
+    pool.query(queryText, queryValues)
+        .then( result => {})
+})
 
 
 // PUT
