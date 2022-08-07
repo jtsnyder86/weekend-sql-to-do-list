@@ -62,7 +62,12 @@ function handleComplete () {
     $.ajax({
         method: 'PUT',
         url: `/task/${id}`,
-        
+
+    }).then( function (response){
+        getTasks();
+    }).catch( function (err) {
+        console.log(err);
+        alert ('error completing')
     })
 }
 
