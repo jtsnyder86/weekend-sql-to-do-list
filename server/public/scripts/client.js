@@ -8,6 +8,7 @@ function handleReady () {
 
     // click listeners
     $('#addBtn').on('click', handleAdd),
+    $('#viewTasks').on('click', '.deleteBtn', handleDelete)
 
 
     getTasks();
@@ -27,6 +28,26 @@ function handleAdd () {
     }).then( function (response) {
         $('#taskIn').val('');
         getTasks ();
+    })
+}
+
+function handleDelete () {
+    console.log('not gonna do this one');
+
+    const id = $(this).closest('tr').data('id')
+
+    console.log(id);
+
+    // comm with the server
+    $.ajax ({
+        method: 'DELETE',
+        url: '/task',
+    }).then( function (response) {
+        console.log(response);
+        getTasks ();
+    }).catch( function (err) {
+        console.log(err);
+        alert ('error in delete')
     })
 }
 

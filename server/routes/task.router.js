@@ -59,26 +59,21 @@ taskRouter.post('/', (req, res) => {
 
 // DELETE
 
+taskRouter.delete('/:id', (req, res) => {
+    const id = req.params.id;
 
+    const queryText=`
+    DELETE FROM "todo"
+    WHERE "id" = $1;`;
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    pool.query(queryText, [id])
+        .then( result => {
+            res.sendStatus(200)
+        }).catch ( err => {
+            console.log(err);
+            res.sendStatus(500)
+        })
 
 
 
