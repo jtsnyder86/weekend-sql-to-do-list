@@ -19,7 +19,8 @@ const pool = new Pool({
 // GET
 taskRouter.get('/', (req, res) => {
     let queryText = `
-    SELECT * FROM "todo";`;
+    SELECT * FROM "todo"
+    ORDER BY "status";`;
 
     pool.query(queryText)
         .then( result => {

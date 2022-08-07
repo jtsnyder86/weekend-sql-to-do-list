@@ -3,7 +3,7 @@ console.log('script running');
 $(handleReady);
 
 
-function handleReady () {
+function handleReady() {
     console.log('jq running');
 
     // click listeners
@@ -16,7 +16,7 @@ function handleReady () {
 };
 
 // function for the add button
-function handleAdd () {
+function handleAdd() {
     console.log('so much to do!');
 
     // ajax to communicate with the server
@@ -26,13 +26,13 @@ function handleAdd () {
         data: {
             task: $('#taskIn').val()
         }
-    }).then( function (response) {
+    }).then(function (response) {
         $('#taskIn').val('');
-        getTasks ();
+        getTasks();
     })
 }
 
-function handleDelete () {
+function handleDelete() {
     console.log('not gonna do this one');
 
     const id = $(this).closest('tr').data('id')
@@ -40,19 +40,19 @@ function handleDelete () {
     console.log(id);
 
     // comm with the server
-    $.ajax ({
+    $.ajax({
         method: 'DELETE',
         url: `/task/${id}`,
-    }).then( function (response) {
+    }).then(function (response) {
         console.log(response);
-        getTasks ();
-    }).catch( function (err) {
+        getTasks();
+    }).catch(function (err) {
         console.log(err);
-        alert ('error in delete')
+        alert('error in delete')
     })
 }
 
-function handleComplete () {
+function handleComplete() {
     console.log('feels sooo good');
 
     const id = $(this).closest('tr').data('id');
@@ -63,34 +63,47 @@ function handleComplete () {
         method: 'PUT',
         url: `/task/${id}`,
 
-    }).then( function (response){
+    }).then(function (response) {
         getTasks();
-    }).catch( function (err) {
+    }).catch(function (err) {
         console.log(err);
-        alert ('error completing')
+        alert('error completing')
     })
 }
 
-function getTasks () {
+function getTasks() {
     console.log('in getTasks');
     $('#viewTasks').empty();
 
     $.ajax({
         method: 'GET',
         url: '/task'
-    }).then( function (response){
+    }).then(function (response) {
         console.log('GET my tasks', response);
 
-        for (task of response){
+        for (task of response) {
             console.log(task);
-            $('#viewTasks').append(`
+            if (task.status === false) {
+                $('#viewTasks').append(`
             <tr data-id = ${task.id}>
                 <td>${task.task}</td>
-                <td>${task.status}</td>
-                <td><button class = "completeBtn">COMPLETE</button></td>
+                
+                <td><input type = "checkbox" class = "completeBtn">COMPLETED</input></td>
                 <td><button class = "deleteBtn">DELETE</button></td>
             </tr>
             `)
+            } else {
+                $('#viewTasks').append(`
+            <tr data-id = ${task.id}>
+                <td>${task.task}</td>
+                
+                <td><input type = "checkbox" class = "completeBtn" checked>COMPLETED</input></td>
+                <td><button class = "deleteBtn">DELETE</button></td>
+            </tr>
+            `)
+            }
         }
     })
 };
+
+//<td>${task.status}</td>
