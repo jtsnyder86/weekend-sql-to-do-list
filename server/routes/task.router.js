@@ -43,7 +43,13 @@ taskRouter.post('/', (req, res) => {
     ];
 
     pool.query(queryText, queryValues)
-        .then( result => {})
+        .then( result => {
+            console.log(result);
+            res.sendStatus(201)
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500)
+        })
 })
 
 
