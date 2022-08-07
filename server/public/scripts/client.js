@@ -19,7 +19,7 @@ function handleReady() {
 function handleAdd() {
     console.log('so much to do!');
 
-    // ajax to communicate with the server
+    // ajax to communicate with the server for sending input values
     $.ajax({
         method: 'POST',
         url: '/task',
@@ -39,7 +39,7 @@ function handleDelete() {
 
     console.log(id);
 
-    // comm with the server
+    // comm with the server to delete a task from the list entirely
     $.ajax({
         method: 'DELETE',
         url: `/task/${id}`,
@@ -52,6 +52,7 @@ function handleDelete() {
     })
 }
 
+// function to handle the completed task
 function handleComplete() {
     console.log('feels sooo good');
 
@@ -71,6 +72,7 @@ function handleComplete() {
     })
 }
 
+// function to get tasks from server/db; appends new data to the DOM
 function getTasks() {
     console.log('in getTasks');
     $('#viewTasks').empty();
@@ -86,8 +88,7 @@ function getTasks() {
             if (task.status === false) {
                 $('#viewTasks').append(`
             <tr data-id = ${task.id}>
-                <td>${task.task}</td>
-                
+                <td>${task.task}</td>                
                 <td><input type = "checkbox" class = "completeBtn">COMPLETED</input></td>
                 <td><button class = "deleteBtn">DELETE</button></td>
             </tr>
@@ -95,8 +96,7 @@ function getTasks() {
             } else {
                 $('#viewTasks').append(`
             <tr data-id = ${task.id}>
-                <td>${task.task}</td>
-                
+                <td>${task.task}</td>                
                 <td><input type = "checkbox" class = "completeBtn" checked>COMPLETED</input></td>
                 <td><button class = "deleteBtn">DELETE</button></td>
             </tr>
@@ -105,5 +105,3 @@ function getTasks() {
         }
     })
 };
-
-//<td>${task.status}</td>
