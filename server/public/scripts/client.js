@@ -6,11 +6,29 @@ $(handleReady);
 function handleReady () {
     console.log('jq running');
 
-
+    // click listeners
+    $('#addBtn').on('click', handleAdd),
 
 
     getTasks();
 };
+
+// function for the add button
+function handleAdd () {
+    console.log('so much to do!');
+
+    // ajax to communicate with the server
+    $.ajax({
+        method: 'POST',
+        url: '/task',
+        data: {
+            task: $('#taskIn').val()
+        }
+    }).then( function (response) {
+        $('#taskIn').val('');
+        getTasks ();
+    })
+}
 
 function getTasks () {
     console.log('in getTasks');
