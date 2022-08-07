@@ -89,16 +89,16 @@ function getTasks() {
                 $('#viewTasks').append(`
             <tr data-id = ${task.id}>
                 <td>${task.task}</td>                
-                <td><input type = "checkbox" class = "completeBtn">COMPLETED</input></td>
-                <td><button class = "deleteBtn">DELETE</button></td>
+                <td><input type = "checkbox" class = "completeBtn"></input></td>
+                <td><span class = "deleteBtn">Delete</span></td>
             </tr>
             `)
             } else {
                 $('#viewTasks').append(`
             <tr data-id = ${task.id}>
                 <td>${task.task}</td>                
-                <td><input type = "checkbox" class = "completeBtn" checked>COMPLETED</input></td>
-                <td><button class = "deleteBtn">DELETE</button></td>
+                <td><input type = "checkbox" class = "completeBtn" checked></input></td>
+                <td><span class = "deleteBtn">Delete</span></td>
             </tr>
             `)
             }

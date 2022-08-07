@@ -1,3 +1,77 @@
-body{
-    background-color: gray;
+body {
+    margin: 15px;
+    background-color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    width: 17%;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#addBtn,
+.deleteBtn {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+td:nth-child(2) {
+    text-align: center;
+}
+
+td:nth-child(3) {
+    width: 100px;
+    text-align: center;
+}
+
+#addBtn {
+    padding: 5px;
+    background: rgba(10, 150, 75, 1);
+    border: solid black 0px;
+    box-shadow: 0 0 0 0 rgba(10, 150, 75, 1);
+    animation: pulse-add 2s infinite;
+}
+
+@keyframes pulse-add {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(10, 150, 75, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(10, 150, 75, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(10, 150, 75, 0);
+    }
+}
+
+.deleteBtn:hover {
+    padding: 5px;
+    background: rgba(175, 15, 75, 1);
+    border: solid black 0px;
+    box-shadow: 0 0 0 0 rgba(175, 15, 75, 1);
+    animation: pulse-delete 2s infinite;
+}
+
+@keyframes pulse-delete {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(175, 15, 75, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(175, 15, 75, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(175, 15, 75, 0);
+    }
 }
