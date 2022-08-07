@@ -41,7 +41,7 @@ function handleDelete () {
     // comm with the server
     $.ajax ({
         method: 'DELETE',
-        url: '/task',
+        url: `/task/${id}`,
     }).then( function (response) {
         console.log(response);
         getTasks ();
