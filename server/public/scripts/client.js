@@ -7,8 +7,9 @@ function handleReady () {
     console.log('jq running');
 
     // click listeners
-    $('#addBtn').on('click', handleAdd),
-    $('#viewTasks').on('click', '.deleteBtn', handleDelete)
+    $('#addBtn').on('click', handleAdd);
+    $('#viewTasks').on('click', '.deleteBtn', handleDelete);
+    $('#viewTasks').on('click', '.completeBtn', handleComplete)
 
 
     getTasks();
@@ -48,6 +49,20 @@ function handleDelete () {
     }).catch( function (err) {
         console.log(err);
         alert ('error in delete')
+    })
+}
+
+function handleComplete () {
+    console.log('feels sooo good');
+
+    const id = $(this).closest('tr').data('id');
+
+    console.log(id);
+
+    $.ajax({
+        method: 'PUT',
+        url: `/task/${id}`,
+        
     })
 }
 

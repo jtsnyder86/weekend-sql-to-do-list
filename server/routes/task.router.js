@@ -54,7 +54,22 @@ taskRouter.post('/', (req, res) => {
 
 
 // PUT
+taskRouter.put('/:id', (req, res) => {
+    const id = req.params.id;
 
+    const queryText = `
+    UPDATE "todo"
+    SET "status" = CASE WHEN "status" = false THEN true ELSE false END
+    WHERE "id" = $1;`;
+
+    pool.query(queryText, [id])
+        .then( result => {
+            res.sendStatus(200);
+        }).catch( err => {
+            console.log(err);
+            res.sendStatus(500)
+        })
+})
 
 
 // DELETE
